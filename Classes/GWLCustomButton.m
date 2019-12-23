@@ -34,12 +34,13 @@
         [self buttonWithTypeLeftImageRightTitle];
     } else if (self.customButtonType == GWLCustomButtonTypeRightImageLeftTitle) {
         [self buttonWithTypeRightImageLeftTitle];
+    } else {
+        [self buttonWithTypeLeftImageRightTitle];
     }
     
     //    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.numberOfLines = 0;
 }
 
@@ -70,6 +71,8 @@
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
+    
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 #pragma mark - 上图下文字
 - (void)buttonWithTypeTopImageBottomTitle {
@@ -78,10 +81,10 @@
     
     if (imageRect.size.width != 0 && imageRect.size.height != 0) {
         if (self.imageWidth == 0 && self.imageHeight == 0) {
-            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
-            imageRect.origin.y = 0;
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
+            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
+            imageRect.origin.y = 0;
         } else {
             imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
             imageRect.origin.y = 0;
@@ -106,6 +109,8 @@
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
+    
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 //下图上文字
 - (void)buttonWithTypeBottomImageTopTitle {
@@ -128,10 +133,10 @@
     
     if (imageRect.size.width != 0 && imageRect.size.height != 0) {
         if (self.imageWidth == 0 && self.imageHeight == 0) {
-            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
-            imageRect.origin.y = titleRect.size.height + self.space;
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
+            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
+            imageRect.origin.y = titleRect.size.height + self.space;
         } else {
             imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
             imageRect.origin.y = titleRect.size.height + self.space;
@@ -142,6 +147,8 @@
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
+    
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 //左图右文字
 - (void)buttonWithTypeLeftImageRightTitle {
@@ -151,7 +158,7 @@
     if (imageRect.size.width != 0 && imageRect.size.height != 0) {
         if (self.imageWidth == 0 && self.imageHeight == 0) {
             imageRect.origin.x = 0;
-            imageRect.origin.y = (self.frame.size.height - imageRect.size.height) * 0.5;
+            imageRect.origin.y = 0;
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
         } else {
@@ -160,12 +167,14 @@
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
         }
+    } else {
+        self.space = 0;
     }
     
     if (titleRect.size.height != 0) {
         if (self.titleWidth == 0 && self.titleHeight == 0) {
             titleRect.origin.x = imageRect.size.width + self.space;
-            titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
+            titleRect.origin.y = 0;
             titleRect.size.width = self.frame.size.width - imageRect.size.width - self.space;
             titleRect.size.height = self.frame.size.height;
         } else {
@@ -178,6 +187,8 @@
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
+    
+    self.titleLabel.textAlignment = NSTextAlignmentLeft;
 }
 //右图左文字
 - (void)buttonWithTypeRightImageLeftTitle {
@@ -186,34 +197,38 @@
     
     if (imageRect.size.width != 0 && imageRect.size.height != 0) {
         if (self.imageWidth == 0 && self.imageHeight == 0) {
-            imageRect.origin.x = self.frame.size.width - imageRect.size.width;
-            imageRect.origin.y = (self.frame.size.height - imageRect.size.height) * 0.5;
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
+            imageRect.origin.x = self.frame.size.width - imageRect.size.width;
+            imageRect.origin.y = 0;
         } else {
-            imageRect.origin.x = self.frame.size.width - self.imageWidth;
-            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
+            imageRect.origin.x = self.frame.size.width - self.imageWidth;
+            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
         }
+    } else {
+        self.space = 0;
     }
     
     if (titleRect.size.height != 0) {
         if (self.titleWidth == 0 && self.titleHeight == 0) {
             titleRect.origin.x = 0;
-            titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
+            titleRect.origin.y = 0;
             titleRect.size.width = self.frame.size.width - imageRect.size.width - self.space;
             titleRect.size.height = self.frame.size.height;
         } else {
-            titleRect.origin.x = 0;
-            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
+            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.space - imageRect.size.width);
+            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
         }
     }
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
+    
+    self.titleLabel.textAlignment = NSTextAlignmentRight;
 }
 
 

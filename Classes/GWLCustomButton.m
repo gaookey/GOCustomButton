@@ -129,6 +129,8 @@
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
         }
+    } else {
+        self.space = 0;
     }
     
     if (imageRect.size.width != 0 && imageRect.size.height != 0) {
@@ -136,10 +138,18 @@
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
             imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
-            imageRect.origin.y = titleRect.size.height + self.space;
+            if (titleRect.size.height != 0) {
+                imageRect.origin.y = titleRect.size.height + self.space;
+            } else {
+                imageRect.origin.y = self.frame.size.height - imageRect.size.height;
+            }
         } else {
             imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
-            imageRect.origin.y = titleRect.size.height + self.space;
+            if (titleRect.size.height != 0) {
+                imageRect.origin.y = titleRect.size.height + self.space;
+            } else {
+                imageRect.origin.y = self.frame.size.height - self.imageHeight;
+            }
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
         }

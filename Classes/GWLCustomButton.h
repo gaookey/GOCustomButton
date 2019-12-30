@@ -10,29 +10,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, GWLCustomButtonType) {
-    GWLCustomButtonTypeCenterImageCenterTitle,//图和文字都居中
-    GWLCustomButtonTypeTopImageBottomTitle,//上图下文字
-    GWLCustomButtonTypeBottomImageTopTitle,//下图上文字
-    GWLCustomButtonTypeLeftImageRightTitle,//左图右文字
-    GWLCustomButtonTypeRightImageLeftTitle,//右图左文字
+typedef NS_ENUM(NSInteger, HorizontalButtonType) {
+    HorizontalButtonTypeLeftImageRightTitle    = 1 << 2,//左图右文字
+    HorizontalButtonTypeRightImageLeftTitle    = 1 << 3,//右图左文字
 };
+typedef NS_ENUM(NSInteger, VerticalButtonType) {
+    VerticalButtonTypeTopImageBottomTitle    = 1 << 5,//上图下文字
+    VerticalButtonTypeBottomImageTopTitle    = 1 << 6,//下图上文字
+};
+
+
 @interface GWLCustomButton : UIButton
 
-/// 创建 CustomButton
-+ (instancetype)gwl_customButton:(GWLCustomButtonType)type;
-/// 更新 CustomButton
-- (void)gwl_updateCustomButton:(GWLCustomButtonType)type;
+/// 图片和文字水平居中
+/// @param type HorizontalButtonType 类型
+/// @param isAutomaticWidth 一行显示文字，是否根据文字长度自动更改button长度，YES 时 titleWidth 和 titleHeight 设置无效
++ (instancetype)gwl_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
 
-/// CustomButton 类型
-@property (assign, nonatomic) GWLCustomButtonType customButtonType;
-/// 图片的宽度
+/// 图片和文字垂直居中
+/// @param type VerticalButtonType 类型
+/// @param isAutomaticHeight button固定宽度，是否根据文字高度自动更改button高度，YES 时 titleWidth 和 titleHeight 设置无效
++ (instancetype)gwl_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight;
+
+/// 图片和文字居中
++ (instancetype)gwl_centerButton;
+
+
+/// 图片的宽度 (必须与 imageHeight 成对出现)
 @property (assign, nonatomic) CGFloat imageWidth;
-/// 图片的高度
+/// 图片的高度 (必须与 imageWidth 成对出现)
 @property (assign, nonatomic) CGFloat imageHeight;
-/// 文字的宽度
+/// 文字的宽度 (必须与 titleHeight 成对出现)
 @property (assign, nonatomic) CGFloat titleWidth;
-/// 文字的高度
+/// 文字的高度 (必须与 titleWidth 成对出现)
 @property (assign, nonatomic) CGFloat titleHeight;
 /// 图片和文字的间距
 @property (assign, nonatomic) CGFloat space;

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GWLCustomButton"
-  spec.version      = "0.0.1"
+  spec.version      = "1.0.0"
   spec.summary      = "自定义的UIButton"
   spec.homepage     = "https://gwl.xyz/"
   spec.license      = "MIT"

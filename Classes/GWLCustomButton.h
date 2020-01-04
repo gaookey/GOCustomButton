@@ -6,6 +6,10 @@
 //  Copyright © 2019 gwl. All rights reserved.
 //
 
+/**
+ 控件布局以图片为基准
+ */
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,16 +19,15 @@ typedef NS_ENUM(NSInteger, HorizontalButtonType) {
     HorizontalButtonTypeRightImageLeftTitle    = 1 << 3,//右图左文字
 };
 typedef NS_ENUM(NSInteger, VerticalButtonType) {
-    VerticalButtonTypeTopImageBottomTitle    = 1 << 5,//上图下文字
-    VerticalButtonTypeBottomImageTopTitle    = 1 << 6,//下图上文字
+    VerticalButtonTypeTopImageBottomTitle      = 1 << 5,//上图下文字
+    VerticalButtonTypeBottomImageTopTitle      = 1 << 6,//下图上文字
 };
-
 
 @interface GWLCustomButton : UIButton
 
 /// 图片和文字水平居中
 /// @param type HorizontalButtonType 类型
-/// @param isAutomaticWidth 一行显示文字，是否根据文字长度自动更改button长度，YES 时 titleWidth 和 titleHeight 设置无效
+/// @param isAutomaticWidth button固定高度，一行显示文字，是否根据文字长度自动更改button长度，YES 时 titleWidth 和 titleHeight 设置无效
 + (instancetype)gwl_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
 
 /// 图片和文字垂直居中
@@ -44,8 +47,10 @@ typedef NS_ENUM(NSInteger, VerticalButtonType) {
 @property (assign, nonatomic) CGFloat titleWidth;
 /// 文字的高度 (必须与 titleWidth 成对出现)
 @property (assign, nonatomic) CGFloat titleHeight;
-/// 图片和文字的间距
-@property (assign, nonatomic) CGFloat space;
+/// 图片和文字之间的间距
+@property (assign, nonatomic) CGFloat imageTitleSpacing;
+/// 默认为图片初始位置的间距，无图片时则为文字初始位置的间距
+@property (assign, nonatomic) CGFloat initialPositionSpacing;
 
 @end
 

@@ -77,51 +77,51 @@
     self.titleLabel.textAlignment = NSTextAlignmentRight;
     
     if (self.isAutomaticWidth) {
-        self.titleHeight = 0;
         self.titleWidth = 0;
+        self.titleHeight = 0;
     }
     
     CGRect selfRect = self.frame;
     CGRect imageRect = self.imageView.frame;
     CGRect titleRect = self.titleLabel.frame;
     
-    if (imageRect.size.width != 0 && imageRect.size.height != 0) {
-        if (self.imageWidth == 0 && self.imageHeight == 0) {
+    if (imageRect.size.width != 0 || imageRect.size.height != 0) {
+        if (self.imageWidth == 0 || self.imageHeight == 0) {
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
-            imageRect.origin.x = self.frame.size.width - imageRect.size.width;
+            imageRect.origin.x = self.frame.size.width - imageRect.size.width - self.initialPositionSpacing;
             imageRect.origin.y = 0;
         } else {
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
-            imageRect.origin.x = self.frame.size.width - self.imageWidth;
+            imageRect.origin.x = self.frame.size.width - self.imageWidth - self.initialPositionSpacing;
             imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     if (titleRect.size.height != 0) {
-        if (self.titleWidth == 0 && self.titleHeight == 0) {
-            titleRect.origin.x = 0;
-            titleRect.origin.y = 0;
+        if (self.titleWidth == 0 || self.titleHeight == 0) {
             titleRect.size.width = ceil([self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, titleRect.size.height)].width);
             titleRect.size.height = self.frame.size.height;
+            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.imageTitleSpacing - imageRect.size.width - self.initialPositionSpacing);
+            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
         } else {
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.space - imageRect.size.width);
+            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.imageTitleSpacing - imageRect.size.width - self.initialPositionSpacing);
             titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
     
     if (self.isAutomaticWidth) {
-        selfRect.size.width = self.space + imageRect.size.width + titleRect.size.width;
+        selfRect.size.width = self.imageTitleSpacing + imageRect.size.width + titleRect.size.width + self.initialPositionSpacing;
         self.frame = selfRect;
     }
 }
@@ -132,47 +132,47 @@
     CGRect titleRect = self.titleLabel.frame;
     
     if (self.isAutomaticWidth) {
-        self.titleHeight = 0;
         self.titleWidth = 0;
+        self.titleHeight = 0;
     }
     
-    if (imageRect.size.width != 0 && imageRect.size.height != 0) {
-        if (self.imageWidth == 0 && self.imageHeight == 0) {
-            imageRect.origin.x = 0;
-            imageRect.origin.y = 0;
+    if (imageRect.size.width != 0 || imageRect.size.height != 0) {
+        if (self.imageWidth == 0 || self.imageHeight == 0) {
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
+            imageRect.origin.x = self.initialPositionSpacing;
+            imageRect.origin.y = 0;
         } else {
-            imageRect.origin.x = 0;
-            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
+            imageRect.origin.x = self.initialPositionSpacing;
+            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     if (titleRect.size.height != 0) {
-        if (self.titleWidth == 0 && self.titleHeight == 0) {
-            titleRect.origin.x = imageRect.size.width + self.space;
-            titleRect.origin.y = 0;
+        if (self.titleWidth == 0 || self.titleHeight == 0) {
             titleRect.size.width = ceil([self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, titleRect.size.height)].width);
             titleRect.size.height = self.frame.size.height;
+            titleRect.origin.x = imageRect.size.width + self.imageTitleSpacing + self.initialPositionSpacing;
+            titleRect.origin.y = 0;
         } else {
-            titleRect.origin.x = imageRect.size.width + self.space;
-            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
+            titleRect.origin.x = imageRect.size.width + self.imageTitleSpacing + self.initialPositionSpacing;
+            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
     
     if (self.isAutomaticWidth) {
-        selfRect.size.width = self.space + imageRect.size.width + titleRect.size.width;
+        selfRect.size.width = self.imageTitleSpacing + imageRect.size.width + titleRect.size.width + self.initialPositionSpacing;
         self.frame = selfRect;
     }
 }
@@ -182,61 +182,51 @@
     self.titleLabel.numberOfLines = 0;
     
     if (self.isAutomaticHeight) {
-        self.titleHeight = 0;
         self.titleWidth = 0;
+        self.titleHeight = 0;
     }
     
     CGRect selfRect = self.frame;
     CGRect imageRect = self.imageView.frame;
     CGRect titleRect = self.titleLabel.frame;
     
-    if (titleRect.size.height != 0) {
-        if (self.titleWidth == 0 && self.titleHeight == 0) {
-            titleRect.origin.x = 0;
-            titleRect.origin.y = 0;
-            titleRect.size.width = self.frame.size.width;
-            titleRect.size.height = ceil([self.titleLabel sizeThatFits:CGSizeMake(titleRect.size.width, MAXFLOAT)].height);
-        } else {
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
-            titleRect.origin.y = 0;
-            titleRect.size.width = self.titleWidth;
-            titleRect.size.height = self.titleHeight;
-        }
-    } else {
-        self.space = 0;
-    }
-    
-    if (imageRect.size.width != 0 && imageRect.size.height != 0) {
-        if (self.imageWidth == 0 && self.imageHeight == 0) {
+    if (imageRect.size.width != 0 || imageRect.size.height != 0) {
+        if (self.imageWidth == 0 || self.imageHeight == 0) {
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
             imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
-            if (titleRect.size.height != 0) {
-                imageRect.origin.y = titleRect.size.height + self.space;
-            } else {
-                imageRect.origin.y = 0;
-            }
+            imageRect.origin.y = self.frame.size.height - imageRect.size.height - self.initialPositionSpacing;
         } else {
-            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
-            if (titleRect.size.height != 0) {
-                imageRect.origin.y = titleRect.size.height + self.space;
-            } else {
-                imageRect.origin.y = 0;
-            }
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
+            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
+            imageRect.origin.y = self.frame.size.height - imageRect.size.height - self.initialPositionSpacing;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
+    }
+    
+    if (titleRect.size.height != 0) {
+        if (self.titleWidth == 0 || self.titleHeight == 0) {
+            titleRect.size.width = self.frame.size.width;
+            titleRect.size.height = ceil([self.titleLabel sizeThatFits:CGSizeMake(titleRect.size.width, MAXFLOAT)].height);
+            titleRect.origin.x = 0;
+            titleRect.origin.y = self.frame.size.height - imageRect.size.height - self.imageTitleSpacing - self.initialPositionSpacing - titleRect.size.height;
+        } else {
+            titleRect.size.width = self.titleWidth;
+            titleRect.size.height = self.titleHeight;
+            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
+            titleRect.origin.y = self.frame.size.height - imageRect.size.height - self.imageTitleSpacing - self.initialPositionSpacing - self.titleHeight;
+        }
+    } else {
+        self.imageTitleSpacing = 0;
     }
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
-    self.frame = selfRect;
     
     if (self.isAutomaticHeight) {
-        //        self.titleLabel.adjustsFontSizeToFitWidth = YES;
-        selfRect.size.height = self.space + imageRect.size.height + titleRect.size.height;
+        selfRect.size.height = imageRect.size.height + titleRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing;
         self.frame = selfRect;
     }
 }
@@ -246,51 +236,51 @@
     self.titleLabel.numberOfLines = 0;
     
     if (self.isAutomaticHeight) {
-        self.titleHeight = 0;
         self.titleWidth = 0;
+        self.titleHeight = 0;
     }
     
     CGRect selfRect = self.frame;
     CGRect imageRect = self.imageView.frame;
     CGRect titleRect = self.titleLabel.frame;
     
-    if (imageRect.size.width != 0 && imageRect.size.height != 0) {
-        if (self.imageWidth == 0 && self.imageHeight == 0) {
+    if (imageRect.size.width != 0 || imageRect.size.height != 0) {
+        if (self.imageWidth == 0 || self.imageHeight == 0) {
             imageRect.size.width = self.frame.size.height < self.frame.size.width ? self.frame.size.height : self.frame.size.width;
             imageRect.size.height = imageRect.size.width;
             imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
-            imageRect.origin.y = 0;
+            imageRect.origin.y = self.initialPositionSpacing;
         } else {
-            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
-            imageRect.origin.y = 0;
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
+            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
+            imageRect.origin.y = self.initialPositionSpacing;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     if (titleRect.size.height != 0) {
-        if (self.titleWidth == 0 && self.titleHeight == 0) {
-            titleRect.origin.x = 0;
-            titleRect.origin.y = imageRect.size.height + self.space;
+        if (self.titleWidth == 0 || self.titleHeight == 0) {
             titleRect.size.width = self.frame.size.width;
             titleRect.size.height = ceil([self.titleLabel sizeThatFits:CGSizeMake(titleRect.size.width, MAXFLOAT)].height);
+            titleRect.origin.x = 0;
+            titleRect.origin.y = imageRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing;
         } else {
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
-            titleRect.origin.y = imageRect.size.height + self.space;
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
+            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
+            titleRect.origin.y = imageRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing;
         }
     } else {
-        self.space = 0;
+        self.imageTitleSpacing = 0;
     }
     
     self.imageView.frame = imageRect;
     self.titleLabel.frame = titleRect;
     
     if (self.isAutomaticHeight) {
-        selfRect.size.height = self.space + imageRect.size.height + titleRect.size.height;
+        selfRect.size.height = self.imageTitleSpacing + imageRect.size.height + titleRect.size.height + self.initialPositionSpacing;
         self.frame = selfRect;
     }
 }
@@ -302,24 +292,22 @@
     CGRect imageRect = self.imageView.frame;
     CGRect titleRect = self.titleLabel.frame;
     
-    if (self.imageWidth == 0 && self.imageHeight == 0) {
-        imageRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    if (self.imageWidth == 0 || self.imageHeight == 0) {
+        imageRect = self.bounds;
     } else {
-        imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
-        imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
         imageRect.size.width = self.imageWidth;
         imageRect.size.height = self.imageHeight;
-        imageRect = imageRect;
+        imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
+        imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
     }
     
-    if (self.titleWidth == 0 && self.titleHeight == 0) {
-        titleRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    if (self.titleWidth == 0 || self.titleHeight == 0) {
+        titleRect = self.bounds;
     } else {
-        titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
-        titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
         titleRect.size.width = self.titleWidth;
         titleRect.size.height = self.titleHeight;
-        titleRect = titleRect;
+        titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
+        titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
     }
     
     self.imageView.frame = imageRect;

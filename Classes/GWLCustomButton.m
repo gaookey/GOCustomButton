@@ -94,8 +94,8 @@
         } else {
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
-            imageRect.origin.x = self.frame.size.width - self.imageWidth - self.initialPositionSpacing;
-            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
+            imageRect.origin.x = self.frame.size.width - imageRect.size.width - self.initialPositionSpacing;
+            imageRect.origin.y = (self.frame.size.height - imageRect.size.height) * 0.5;
         }
     } else {
         self.imageTitleSpacing = 0;
@@ -105,13 +105,13 @@
         if (self.titleWidth == 0 || self.titleHeight == 0) {
             titleRect.size.width = ceil([self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, titleRect.size.height)].width);
             titleRect.size.height = self.frame.size.height;
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.imageTitleSpacing - imageRect.size.width - self.initialPositionSpacing);
-            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
+            titleRect.origin.x = (self.frame.size.width - titleRect.size.width - imageRect.size.width - self.imageTitleSpacing - self.initialPositionSpacing);
+            titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
         } else {
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth - self.imageTitleSpacing - imageRect.size.width - self.initialPositionSpacing);
-            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
+            titleRect.origin.x = (self.frame.size.width - titleRect.size.width - imageRect.size.width - self.imageTitleSpacing - self.initialPositionSpacing);
+            titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
         }
     } else {
         self.imageTitleSpacing = 0;
@@ -146,7 +146,7 @@
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
             imageRect.origin.x = self.initialPositionSpacing;
-            imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
+            imageRect.origin.y = (self.frame.size.height - imageRect.size.height) * 0.5;
         }
     } else {
         self.imageTitleSpacing = 0;
@@ -162,7 +162,7 @@
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
             titleRect.origin.x = imageRect.size.width + self.imageTitleSpacing + self.initialPositionSpacing;
-            titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
+            titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
         }
     } else {
         self.imageTitleSpacing = 0;
@@ -199,7 +199,7 @@
         } else {
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
-            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
+            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
             imageRect.origin.y = self.frame.size.height - imageRect.size.height - self.initialPositionSpacing;
         }
     } else {
@@ -215,8 +215,8 @@
         } else {
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
-            titleRect.origin.y = self.frame.size.height - imageRect.size.height - self.imageTitleSpacing - self.initialPositionSpacing - self.titleHeight;
+            titleRect.origin.x = (self.frame.size.width - titleRect.size.width) * 0.5;
+            titleRect.origin.y = self.frame.size.height - imageRect.size.height - self.imageTitleSpacing - self.initialPositionSpacing - titleRect.size.height;
         }
     } else {
         self.imageTitleSpacing = 0;
@@ -253,7 +253,7 @@
         } else {
             imageRect.size.width = self.imageWidth;
             imageRect.size.height = self.imageHeight;
-            imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
+            imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
             imageRect.origin.y = self.initialPositionSpacing;
         }
     } else {
@@ -269,7 +269,7 @@
         } else {
             titleRect.size.width = self.titleWidth;
             titleRect.size.height = self.titleHeight;
-            titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
+            titleRect.origin.x = (self.frame.size.width - titleRect.size.width) * 0.5;
             titleRect.origin.y = imageRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing;
         }
     } else {
@@ -297,8 +297,8 @@
     } else {
         imageRect.size.width = self.imageWidth;
         imageRect.size.height = self.imageHeight;
-        imageRect.origin.x = (self.frame.size.width - self.imageWidth) * 0.5;
-        imageRect.origin.y = (self.frame.size.height - self.imageHeight) * 0.5;
+        imageRect.origin.x = (self.frame.size.width - imageRect.size.width) * 0.5;
+        imageRect.origin.y = (self.frame.size.height - imageRect.size.height) * 0.5;
     }
     
     if (self.titleWidth == 0 || self.titleHeight == 0) {
@@ -306,8 +306,8 @@
     } else {
         titleRect.size.width = self.titleWidth;
         titleRect.size.height = self.titleHeight;
-        titleRect.origin.x = (self.frame.size.width - self.titleWidth) * 0.5;
-        titleRect.origin.y = (self.frame.size.height - self.titleHeight) * 0.5;
+        titleRect.origin.x = (self.frame.size.width - titleRect.size.width) * 0.5;
+        titleRect.origin.y = (self.frame.size.height - titleRect.size.height) * 0.5;
     }
     
     self.imageView.frame = imageRect;

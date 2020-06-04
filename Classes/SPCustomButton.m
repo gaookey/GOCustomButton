@@ -1,14 +1,14 @@
 //
-//  GWLCustomButton.m
-//  GWLCustomButton
+//  SPCustomButton.m
+//  SPCustomButton
 //
-//  Created by gwl on 2019/12/18.
+//  Created by 高文立 on 2019/12/18.
 //  Copyright © 2019 gwl. All rights reserved.
 //
 
-#import "GWLCustomButton.h"
+#import "SPCustomButton.h"
 
-@interface GWLCustomButton ()
+@interface SPCustomButton ()
 
 @property (assign, nonatomic) BOOL isVertical;
 @property (assign, nonatomic) BOOL isAutomaticHeight;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation GWLCustomButton
+@implementation SPCustomButton
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -32,22 +32,22 @@
     return self;
 }
 
-+ (instancetype)gwl_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight {
-    GWLCustomButton *customButton = [GWLCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)sp_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight {
+    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isVertical = YES;
     customButton.verticalButtonType = type;
     customButton.isAutomaticHeight = isAutomaticHeight;
     return customButton;
 }
-+ (instancetype)gwl_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth {
-    GWLCustomButton *customButton = [GWLCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)sp_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth {
+    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isHorizontal = YES;
     customButton.horizontalButtonType = type;
     customButton.isAutomaticWidth = isAutomaticWidth;
     return customButton;
 }
-+ (instancetype)gwl_centerButton {
-    GWLCustomButton *customButton = [GWLCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)sp_centerButton {
+    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isCenter = YES;
     return customButton;
 }

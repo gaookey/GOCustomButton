@@ -1,13 +1,13 @@
 //
-//  GWLCustomButton.h
-//  GWLCustomButton
+//  SPCustomButton.h
+//  SPCustomButton
 //
-//  Created by gwl on 2019/12/18.
+//  Created by 高文立 on 2019/12/18.
 //  Copyright © 2019 gwl. All rights reserved.
 //
 
 /**
- 控件布局以图片为基准
+ * 控件布局以图片为基准
  */
 
 #import <UIKit/UIKit.h>
@@ -23,22 +23,22 @@ typedef NS_ENUM(NSInteger, VerticalButtonType) {
     VerticalButtonTypeBottomImageTopTitle      = 1 << 6,//下图上文字
 };
 
-@interface GWLCustomButton : UIButton
+@interface SPCustomButton : UIButton
 
 #pragma mark - method
 
 /// 图片和文字水平居中
 /// @param type HorizontalButtonType 类型
 /// @param isAutomaticWidth button固定高度，一行显示文字，是否根据文字长度自动更改button长度，YES 时 titleWidth 和 titleHeight 设置无效
-+ (instancetype)gwl_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
++ (instancetype)sp_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
 
 /// 图片和文字垂直居中
 /// @param type VerticalButtonType 类型
 /// @param isAutomaticHeight button固定宽度，是否根据文字高度自动更改button高度，YES 时 titleWidth 和 titleHeight 设置无效
-+ (instancetype)gwl_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight;
++ (instancetype)sp_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight;
 
 /// 图片和文字居中
-+ (instancetype)gwl_centerButton;
++ (instancetype)sp_centerButton;
 
 #pragma mark - property
 
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, VerticalButtonType) {
 @property (assign, nonatomic) CGFloat titleHeight;
 
 
-#pragma mark - 以下属性对使用 gwl_centerButton 方法创建的 button 设置不生效
+#pragma mark - 以下属性对使用 sp_centerButton 方法创建的 button 设置不生效
 
 /**
  图片和文字之间的间距，在无图片或无文字时等于0

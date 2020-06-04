@@ -1,8 +1,8 @@
-# GWLCustomButton
+# SPCustomButton
 
 ### 安装
 
-使用 `CocoaPods` 安装:  `pod 'GWLCustomButton'`
+使用 `CocoaPods` 安装:  `pod 'SPCustomButton'`
 
 
 
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, HorizontalButtonType) {
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)gwl_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
++ (instancetype)sp_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth;
 ```
 
 #### 图片文字垂直显示
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, VerticalButtonType) {
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)gwl_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight;
++ (instancetype)sp_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight;
 ```
 
 #### 图片文字居中显示
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, VerticalButtonType) {
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)gwl_centerButton;
++ (instancetype)sp_centerButton;
 ```
 
 #### 属性

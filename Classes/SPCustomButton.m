@@ -11,12 +11,12 @@
 @interface SPCustomButton ()
 
 @property (assign, nonatomic) BOOL isVertical;
-@property (assign, nonatomic) BOOL isAutomaticHeight;
-@property (assign, nonatomic) VerticalButtonType verticalButtonType;
+@property (assign, nonatomic) BOOL isAutoHeight;
+@property (assign, nonatomic) SPVerticalButtonType verticalButtonType;
 
 @property (assign, nonatomic) BOOL isHorizontal;
-@property (assign, nonatomic) BOOL isAutomaticWidth;
-@property (assign, nonatomic) HorizontalButtonType horizontalButtonType;
+@property (assign, nonatomic) BOOL isAutoWidth;
+@property (assign, nonatomic) SPHorizontalButtonType horizontalButtonType;
 
 @property (assign, nonatomic) BOOL isCenter;
 
@@ -32,18 +32,18 @@
     return self;
 }
 
-+ (instancetype)sp_verticalButton:(VerticalButtonType)type isAutomaticHeight:(BOOL)isAutomaticHeight {
++ (instancetype)sp_verticalButton:(SPVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight {
     SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isVertical = YES;
     customButton.verticalButtonType = type;
-    customButton.isAutomaticHeight = isAutomaticHeight;
+    customButton.isAutoHeight = isAutoHeight;
     return customButton;
 }
-+ (instancetype)sp_horizontalButton:(HorizontalButtonType)type isAutomaticWidth:(BOOL)isAutomaticWidth {
++ (instancetype)sp_horizontalButton:(SPHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth {
     SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isHorizontal = YES;
     customButton.horizontalButtonType = type;
-    customButton.isAutomaticWidth = isAutomaticWidth;
+    customButton.isAutoWidth = isAutoWidth;
     return customButton;
 }
 + (instancetype)sp_centerButton {
@@ -56,15 +56,15 @@
     [super layoutSubviews];
     
     if (self.isVertical) {//垂直
-        if (self.verticalButtonType == VerticalButtonTypeTopImageBottomTitle) {
+        if (self.verticalButtonType == SPVerticalButtonTypeTopImageBottomTitle) {
             [self verticalButtonTopImageBottomTitle];
-        } else if (self.verticalButtonType == VerticalButtonTypeBottomImageTopTitle) {
+        } else if (self.verticalButtonType == SPVerticalButtonTypeBottomImageTopTitle) {
             [self verticalButtonBottomImageTopTitle];
         }
     } else if (self.isHorizontal) {//水平
-        if (self.horizontalButtonType == HorizontalButtonTypeLeftImageRightTitle) {
+        if (self.horizontalButtonType == SPHorizontalButtonTypeLeftImageRightTitle) {
             [self horizontalButtonLeftImageRightTitle];
-        } else if (self.horizontalButtonType == HorizontalButtonTypeRightImageLeftTitle) {
+        } else if (self.horizontalButtonType == SPHorizontalButtonTypeRightImageLeftTitle) {
             [self horizontalButtonRightImageLeftTitle];
         }
     } else if (self.isCenter) {//中心
@@ -76,7 +76,7 @@
 - (void)horizontalButtonRightImageLeftTitle {
     self.titleLabel.textAlignment = NSTextAlignmentRight;
     
-    if (self.isAutomaticWidth) {
+    if (self.isAutoWidth) {
         self.titleWidth = 0;
         self.titleHeight = 0;
     }
@@ -121,10 +121,10 @@
     self.titleLabel.frame = titleRect;
     
     if (self.endPositionSpacing > 0) {
-        self.isAutomaticWidth = YES;
+        self.isAutoWidth = YES;
     }
     
-    if (self.isAutomaticWidth) {
+    if (self.isAutoWidth) {
         selfRect.size.width = imageRect.size.width + titleRect.size.width + self.imageTitleSpacing + self.initialPositionSpacing + self.endPositionSpacing;
         self.frame = selfRect;
     }
@@ -135,7 +135,7 @@
     CGRect imageRect = self.imageView.frame;
     CGRect titleRect = self.titleLabel.frame;
     
-    if (self.isAutomaticWidth) {
+    if (self.isAutoWidth) {
         self.titleWidth = 0;
         self.titleHeight = 0;
     }
@@ -176,10 +176,10 @@
     self.titleLabel.frame = titleRect;
     
     if (self.endPositionSpacing > 0) {
-        self.isAutomaticWidth = YES;
+        self.isAutoWidth = YES;
     }
     
-    if (self.isAutomaticWidth) {
+    if (self.isAutoWidth) {
         selfRect.size.width = imageRect.size.width + titleRect.size.width + self.imageTitleSpacing + self.initialPositionSpacing + self.endPositionSpacing;
         self.frame = selfRect;
     }
@@ -189,7 +189,7 @@
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.numberOfLines = 0;
     
-    if (self.isAutomaticHeight) {
+    if (self.isAutoHeight) {
         self.titleWidth = 0;
         self.titleHeight = 0;
     }
@@ -234,10 +234,10 @@
     self.titleLabel.frame = titleRect;
     
     if (self.endPositionSpacing > 0) {
-        self.isAutomaticHeight = YES;
+        self.isAutoHeight = YES;
     }
     
-    if (self.isAutomaticHeight) {
+    if (self.isAutoHeight) {
         selfRect.size.height = imageRect.size.height + titleRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing + self.endPositionSpacing;
         self.frame = selfRect;
     }
@@ -247,7 +247,7 @@
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.numberOfLines = 0;
     
-    if (self.isAutomaticHeight) {
+    if (self.isAutoHeight) {
         self.titleWidth = 0;
         self.titleHeight = 0;
     }
@@ -292,10 +292,10 @@
     self.titleLabel.frame = titleRect;
     
     if (self.endPositionSpacing > 0) {
-        self.isAutomaticHeight = YES;
+        self.isAutoHeight = YES;
     }
     
-    if (self.isAutomaticHeight) {
+    if (self.isAutoHeight) {
         selfRect.size.height = imageRect.size.height + titleRect.size.height + self.imageTitleSpacing + self.initialPositionSpacing + self.endPositionSpacing;
         self.frame = selfRect;
     }

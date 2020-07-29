@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
 
   spec.name                = "SPCustomButton"
-  spec.version             = "1.0.3"
-  spec.summary             = "自定义的UIButton"
+  spec.version             = "1.0.5"
+  spec.summary             = "A simple custom button."
   spec.homepage            = "https://mouos.com"
   spec.license             = "MIT"
   spec.author              = { "高文立" => "swiftprimer@gmail.com" }

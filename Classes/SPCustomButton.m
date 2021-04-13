@@ -3,7 +3,6 @@
 //  SPCustomButton
 //
 //  Created by 高文立 on 2019/12/18.
-//  Copyright © 2019 gwl. All rights reserved.
 //
 
 #import "SPCustomButton.h"

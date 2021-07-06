@@ -1,4 +1,4 @@
-# SPCustomButton
+# GOCustomButton
 
 ### 
 
@@ -9,31 +9,31 @@
 #### 图片文字水平显示
 
 ```objective-c
-typedef NS_ENUM(NSInteger, SPHorizontalButtonType) {
-    SPHorizontalButtonTypeLeftImageRightTitle    = 1 << 2,//左图右文字
-    SPHorizontalButtonTypeRightImageLeftTitle    = 1 << 3,//右图左文字
+typedef NS_ENUM(NSInteger, GOHorizontalButtonType) {
+    SPHorizontalButtonTypeLeftImageRightTitle    = 1 << 2,
+    SPHorizontalButtonTypeRightImageLeftTitle    = 1 << 3,
 };
 ```
 
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)sp_horizontalButton:(SPHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth;
++ (instancetype)go_horizontalButton:(GOHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth;
 ```
 
 #### 图片文字垂直显示
 
 ```objective-c
-typedef NS_ENUM(NSInteger, SPVerticalButtonType) {
-    SPVerticalButtonTypeTopImageBottomTitle      = 1 << 5,//上图下文字
-    SPVerticalButtonTypeBottomImageTopTitle      = 1 << 6,//下图上文字
+typedef NS_ENUM(NSInteger, GOVerticalButtonType) {
+    SPVerticalButtonTypeTopImageBottomTitle      = 1 << 5,
+    SPVerticalButtonTypeBottomImageTopTitle      = 1 << 6,
 };
 ```
 
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)sp_verticalButton:(SPVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight;
++ (instancetype)go_verticalButton:(GOVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight;
 ```
 
 #### 图片文字居中显示
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, SPVerticalButtonType) {
 ##### 创建方法
 
 ```objective-c
-+ (instancetype)sp_centerButton;
++ (instancetype)go_centerButton;
 ```
 
 #### 属性

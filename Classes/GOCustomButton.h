@@ -1,6 +1,6 @@
 //
-//  SPCustomButton.h
-//  SPCustomButton
+//  GOCustomButton.h
+//  GOCustomButton
 //
 //  Created by 高文立 on 2019/12/18.
 //
@@ -9,31 +9,31 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, SPHorizontalButtonType) {
+typedef NS_ENUM(NSInteger, GOHorizontalButtonType) {
     SPHorizontalButtonTypeLeftImageRightTitle    = 1 << 2,
     SPHorizontalButtonTypeRightImageLeftTitle    = 1 << 3,
 };
 
-typedef NS_ENUM(NSInteger, SPVerticalButtonType) {
+typedef NS_ENUM(NSInteger, GOVerticalButtonType) {
     SPVerticalButtonTypeTopImageBottomTitle      = 1 << 5,
     SPVerticalButtonTypeBottomImageTopTitle      = 1 << 6,
 };
 
 /// 控件布局以图片为基准
-@interface SPCustomButton : UIButton
+@interface GOCustomButton : UIButton
 
 /// 图片和文字水平
-/// @param type SPHorizontalButtonType 类型
+/// @param type GOHorizontalButtonType 类型
 /// @param isAutoWidth button固定高度，一行显示文字，是否根据文字长度自动更改button长度，YES 时 titleWidth 和 titleHeight 设置无效
-+ (instancetype)sp_horizontalButton:(SPHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth;
++ (instancetype)go_horizontalButton:(GOHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth;
 
 /// 图片和文字垂直
-/// @param type SPVerticalButtonType 类型
+/// @param type GOVerticalButtonType 类型
 /// @param isAutoHeight button固定宽度，是否根据文字高度自动更改button高度，YES 时 titleWidth 和 titleHeight 设置无效
-+ (instancetype)sp_verticalButton:(SPVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight;
++ (instancetype)go_verticalButton:(GOVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight;
 
 /// 图片和文字居中
-+ (instancetype)sp_centerButton;
++ (instancetype)go_centerButton;
 
 
 /// 图片的宽度 (必须与 imageHeight 成对出现)
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, SPVerticalButtonType) {
 @property (assign, nonatomic) CGFloat titleHeight;
 
 
-#pragma mark - 以下属性对使用 sp_centerButton 方法创建的 button 设置不生效
+#pragma mark - 以下属性对使用 go_centerButton 方法创建的 button 设置不生效
 
 /// 图片和文字之间的间距，在无图片或无文字时等于0
 @property (assign, nonatomic) CGFloat imageTitleSpacing;

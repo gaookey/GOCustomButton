@@ -1,27 +1,27 @@
 //
-//  SPCustomButton.m
-//  SPCustomButton
+//  GOCustomButton.m
+//  GOCustomButton
 //
 //  Created by 高文立 on 2019/12/18.
 //
 
-#import "SPCustomButton.h"
+#import "GOCustomButton.h"
 
-@interface SPCustomButton ()
+@interface GOCustomButton ()
 
 @property (assign, nonatomic) BOOL isVertical;
 @property (assign, nonatomic) BOOL isAutoHeight;
-@property (assign, nonatomic) SPVerticalButtonType verticalButtonType;
+@property (assign, nonatomic) GOVerticalButtonType verticalButtonType;
 
 @property (assign, nonatomic) BOOL isHorizontal;
 @property (assign, nonatomic) BOOL isAutoWidth;
-@property (assign, nonatomic) SPHorizontalButtonType horizontalButtonType;
+@property (assign, nonatomic) GOHorizontalButtonType horizontalButtonType;
 
 @property (assign, nonatomic) BOOL isCenter;
 
 @end
 
-@implementation SPCustomButton
+@implementation GOCustomButton
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -31,22 +31,22 @@
     return self;
 }
 
-+ (instancetype)sp_verticalButton:(SPVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight {
-    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)go_verticalButton:(GOVerticalButtonType)type isAutoHeight:(BOOL)isAutoHeight {
+    GOCustomButton *customButton = [GOCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isVertical = YES;
     customButton.verticalButtonType = type;
     customButton.isAutoHeight = isAutoHeight;
     return customButton;
 }
-+ (instancetype)sp_horizontalButton:(SPHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth {
-    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)go_horizontalButton:(GOHorizontalButtonType)type isAutoWidth:(BOOL)isAutoWidth {
+    GOCustomButton *customButton = [GOCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isHorizontal = YES;
     customButton.horizontalButtonType = type;
     customButton.isAutoWidth = isAutoWidth;
     return customButton;
 }
-+ (instancetype)sp_centerButton {
-    SPCustomButton *customButton = [SPCustomButton buttonWithType:UIButtonTypeCustom];
++ (instancetype)go_centerButton {
+    GOCustomButton *customButton = [GOCustomButton buttonWithType:UIButtonTypeCustom];
     customButton.isCenter = YES;
     return customButton;
 }
